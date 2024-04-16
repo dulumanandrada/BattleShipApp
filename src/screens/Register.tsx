@@ -21,4 +21,4 @@ const RegisterScreen = () => {
     return <Register onSubmit={handleRegister} />
 }
 
-export default RegisterScreen
+export default RegisterScreen;

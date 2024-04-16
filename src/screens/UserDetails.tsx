@@ -58,6 +58,7 @@ const UserDetailsScreen = () => {
   const goToGameLobby = () => {
     navigation.navigate(GameRouteNames.LOBBY);
   };
+
   useEffect(() => {
     const fetchUserDetailsData = async () => {
       try {
