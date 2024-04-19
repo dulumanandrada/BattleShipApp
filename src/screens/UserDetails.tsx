@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text,StyleSheet, Button  } from 'react-native';
+import { View, Text,StyleSheet, Button, SafeAreaView  } from 'react-native';
 import { useAuth } from '../hooks/authContext';
 import { fetchUserDetails } from '../api'; // Import the fetchUserDetails function
 import { AuthRouteNames, GameRouteNames } from '../router/route-names';
@@ -63,9 +63,11 @@ const UserDetailsScreen = () => {
     const fetchUserDetailsData = async () => {
       try {
         const data = await fetchUserDetails();
+        console.log(data);
+        
         setUserDetails(data);
       } catch (error) {
-        console.error('Error fetching user details:', error);
+        console.error('An error occurred fetching user details:', error);
       }
     };
 
@@ -73,7 +75,7 @@ const UserDetailsScreen = () => {
   }, [auth.token]); 
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.title}>User Details</Text>
       <View style={styles.card}>
         {userDetails ? (
@@ -107,7 +109,7 @@ const UserDetailsScreen = () => {
       <View style={{ marginTop: 130 }}>
         <Button title="LOGOUT" onPress={logout} color="black" />
       </View>
-    </View>
+    </SafeAreaView>
 
   );
 };

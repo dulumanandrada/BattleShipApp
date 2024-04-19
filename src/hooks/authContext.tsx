@@ -8,7 +8,6 @@ interface IAuthContext {
     login: (email: string, password: string) => Promise<void>;
     register: (email: string, password: string) => Promise<void>;
     isLoading: boolean
-
 }
 
 const AuthContext = createContext<IAuthContext>({
@@ -39,6 +38,7 @@ export const AuthContextProvider: React.FC<{children: React.ReactNode}> = ({chil
     const handleLogin = async (email: string, password: string) => {
         try {
             const result = await login(email, password);
+            console.log('res', result);
             await AsyncStorage.setItem('email', email);
             setToken(result);
             setEmail(email);
